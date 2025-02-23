@@ -11,18 +11,12 @@ import java.util.UUID;
 public interface DataLoader<D extends UserData> {
 
     /**
-     * Loads the player data for the given uuid.
+     * Loads the player data for the given uuid and name.
      *
      * @param uuid The player's uuid
-     * @return The player data
-     */
-    Optional<D> load(UUID uuid);
-
-    /**
-     * Loads the player data for the given name.
-     *
      * @param name The player's name
+     *
      * @return The player data
      */
-    Optional<D> load(String name);
+    Optional<D> load(UUID uuid, String name);
 }

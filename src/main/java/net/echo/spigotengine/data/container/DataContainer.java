@@ -68,8 +68,8 @@ public class DataContainer<D extends UserData> {
         this.data.remove(player.getUniqueId());
     }
 
-    public LoadResult load(UUID uuid) {
-        D data = dataLoader.load(uuid).orElse(null);
+    public LoadResult load(UUID uuid, String name) {
+        D data = dataLoader.load(uuid, name).orElse(null);
 
         if (data == null) {
             return LoadResult.FAIL;

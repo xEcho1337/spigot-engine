@@ -20,7 +20,7 @@ public class AccessListener extends BetterListener<SpigotPlugin<?>> {
     public void onAsyncPreLogin(AsyncPlayerPreLoginEvent event) {
         if (event.getLoginResult() != AsyncPlayerPreLoginEvent.Result.ALLOWED) return;
 
-        LoadResult result = plugin.getContainer().load(event.getUniqueId());
+        LoadResult result = plugin.getContainer().load(event.getUniqueId(), event.getName());
 
         if (result == LoadResult.FAIL) {
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, "Failed to load data");
