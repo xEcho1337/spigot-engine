@@ -6,12 +6,7 @@ import java.util.UUID;
 public class ExampleDataLoader implements DataLoader<ExampleData> {
 
     @Override
-    public Optional<ExampleData> load(UUID uuid) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<ExampleData> load(String name) {
+    public Optional<ExampleData> load(UUID uuid, String name) {
         return Optional.empty();
     }
 }
