@@ -17,8 +17,8 @@ import org.bukkit.Bukkit;
  */
 public abstract class SpigotPlugin<D extends UserData> {
 
-    private final PluginLoader<?> pluginLoader;
-    private DataContainer<D> container;
+    protected final PluginLoader<?> pluginLoader;
+    protected DataContainer<D> container;
 
     protected final CommandHandler<?> commandHandler = CommandHandler.create(this);
     protected final ListenerHandler<?> listenerHandler = ListenerHandler.create(this);

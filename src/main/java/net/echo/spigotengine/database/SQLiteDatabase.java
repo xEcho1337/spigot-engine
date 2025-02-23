@@ -12,8 +12,8 @@ import java.util.concurrent.Executor;
  */
 public abstract class SQLiteDatabase {
 
-    private String url;
-    private Connection connection;
+    protected String url;
+    protected Connection connection;
 
     public SQLiteDatabase() {
     }
