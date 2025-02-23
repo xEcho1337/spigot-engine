@@ -1,5 +1,3 @@
-package net.echo.spigotengine.test;
-
 import net.echo.spigotengine.tasks.Task;
 
 @Task(async = true, repeating = true, delay = 10, period = 20)

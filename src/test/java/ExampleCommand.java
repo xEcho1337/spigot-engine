@@ -1,5 +1,3 @@
-package net.echo.spigotengine.test;
-
 import net.echo.spigotengine.commands.BaseCommand;
 import net.echo.spigotengine.commands.SenderFilter;
 import net.echo.spigotengine.commands.annotations.CommandData;

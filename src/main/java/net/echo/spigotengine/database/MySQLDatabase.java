@@ -8,9 +8,6 @@ import java.util.concurrent.Executor;
 
 /**
  * An abstract base for MySQL databases.
- *
- * @author echo
- * @since 1.0.0
  */
 public abstract class MySQLDatabase {
 

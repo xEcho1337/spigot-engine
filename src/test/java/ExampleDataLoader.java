@@ -1,5 +1,3 @@
-package net.echo.spigotengine.test;
-
 import net.echo.spigotengine.data.loader.DataLoader;
 
 import java.util.Optional;

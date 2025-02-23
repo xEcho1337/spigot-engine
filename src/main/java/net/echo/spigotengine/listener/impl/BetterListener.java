@@ -6,15 +6,12 @@ import org.bukkit.event.Listener;
 
 /**
  * A shortcut to easily implements listeners.
- *
- * @author echo
- * @since 1.0.0
  */
-public class BetterListener<I extends SpigotPlugin<?>> implements Listener {
+public class BetterListener<P extends SpigotPlugin<?>> implements Listener {
 
-    protected I plugin;
+    protected P plugin;
 
-    public BetterListener(I plugin) {
+    public BetterListener(P plugin) {
         this.plugin = plugin;
     }
 

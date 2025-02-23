@@ -7,9 +7,6 @@ import java.lang.reflect.Type;
 
 /**
  * Processes an input string to the expected {@code T} output.
- *
- * @author echo
- * @since 1.0.0
  */
 public abstract class Processor<T> {
 

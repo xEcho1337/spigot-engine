@@ -9,9 +9,6 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Class used for handling tasks.
- *
- * @author echo
- * @since 1.0.0
  */
 public class TaskHandler<P extends SpigotPlugin<?>> {
 

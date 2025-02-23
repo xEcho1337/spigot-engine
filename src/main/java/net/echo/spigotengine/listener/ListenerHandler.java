@@ -6,9 +6,6 @@ import net.echo.spigotengine.utils.Initializer;
 
 /**
  * Class used for handling listeners.
- *
- * @author echo
- * @since 1.0.0
  */
 public class ListenerHandler<P extends SpigotPlugin<?>> {
 

@@ -7,9 +7,6 @@ import java.util.UUID;
 
 /**
  * Interface for loading player data.
- *
- * @author echo
- * @since 1.0.0
  */
 public interface DataLoader<D extends UserData> {
 

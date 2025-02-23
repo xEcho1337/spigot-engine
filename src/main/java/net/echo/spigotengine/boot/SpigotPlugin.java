@@ -14,9 +14,6 @@ import org.bukkit.Bukkit;
  * <p>
  * This class serves as the entry point for the plugin, providing methods for
  * enabling, disabling, and loading the plugin.
- *
- * @author echo
- * @since 1.0.0
  */
 public abstract class SpigotPlugin<D extends UserData> {
 

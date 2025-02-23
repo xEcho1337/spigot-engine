@@ -9,9 +9,6 @@ import java.util.concurrent.Executor;
 
 /**
  * An abstract base for SQLite databases.
- *
- * @author echo
- * @since 1.0.0
  */
 public abstract class SQLiteDatabase {
 

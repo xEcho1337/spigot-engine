@@ -5,9 +5,6 @@ import java.util.UUID;
 /**
  * A simple class containing a uuid and the name of the player.
  * This class should be extended by your player data implementation.
- *
- * @author echo
- * @since 1.0.0
  */
 public class UserData {
 

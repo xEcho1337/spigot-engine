@@ -10,9 +10,6 @@ import java.util.function.Consumer;
 /**
  * Simple class to consume all the classes in a package.
  * Useful to register all commands or all listeners all at once.
- *
- * @author echo
- * @since 1.0.0
  */
 public class Initializer {
 

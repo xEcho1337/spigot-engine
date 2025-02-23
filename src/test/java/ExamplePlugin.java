@@ -1,5 +1,3 @@
-package net.echo.spigotengine.test;
-
 import net.echo.spigotengine.boot.PluginLoader;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.data.loader.DataLoader;

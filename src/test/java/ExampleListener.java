@@ -1,5 +1,3 @@
-package net.echo.spigotengine.test;
-
 import net.echo.spigotengine.listener.impl.BetterListener;
 
 public class ExampleListener extends BetterListener<ExamplePlugin> {

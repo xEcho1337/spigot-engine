@@ -5,9 +5,6 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * An annotation containing various information about a task.
- *
- * @author echo
- * @since 1.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Task {
