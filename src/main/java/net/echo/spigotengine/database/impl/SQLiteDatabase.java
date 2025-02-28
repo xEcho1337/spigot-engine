@@ -1,7 +1,9 @@
-package net.echo.spigotengine.database;
+package net.echo.spigotengine.database.impl;
 
 import com.google.common.base.Preconditions;
-import net.echo.spigotengine.database.functions.StatementConsumer;
+import net.echo.spigotengine.boot.SpigotPlugin;
+import net.echo.spigotengine.database.Database;
+import net.echo.spigotengine.utils.functions.StatementConsumer;
 
 import java.sql.*;
 import java.util.concurrent.CompletableFuture;
@@ -10,15 +12,18 @@ import java.util.concurrent.Executor;
 /**
  * An abstract base for SQLite databases.
  */
-public abstract class SQLiteDatabase {
+public abstract class SQLiteDatabase<P extends SpigotPlugin<?>> implements Database {
 
+    protected P plugin;
     protected String url;
     protected Connection connection;
 
-    public SQLiteDatabase() {
+    public SQLiteDatabase(P plugin) {
+        this.plugin = plugin;
     }
 
-    public SQLiteDatabase(String url) {
+    public SQLiteDatabase(P plugin, String url) {
+        this(plugin);
         this.url = url;
         connect();
     }

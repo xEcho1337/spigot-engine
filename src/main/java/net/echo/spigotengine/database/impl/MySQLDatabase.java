@@ -1,6 +1,8 @@
-package net.echo.spigotengine.database;
+package net.echo.spigotengine.database.impl;
 
-import net.echo.spigotengine.database.functions.StatementConsumer;
+import net.echo.spigotengine.boot.SpigotPlugin;
+import net.echo.spigotengine.database.Database;
+import net.echo.spigotengine.utils.functions.StatementConsumer;
 
 import java.sql.*;
 import java.util.concurrent.CompletableFuture;
@@ -9,7 +11,13 @@ import java.util.concurrent.Executor;
 /**
  * An abstract base for MySQL databases.
  */
-public abstract class MySQLDatabase {
+public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Database {
+
+    protected P plugin;
+
+    public MySQLDatabase(P plugin) {
+        this.plugin = plugin;
+    }
 
     public abstract Executor getExecutor();
 

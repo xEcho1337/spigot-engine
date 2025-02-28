@@ -5,9 +5,12 @@ import net.echo.spigotengine.data.UserData;
 import net.echo.spigotengine.data.container.DataContainer;
 import net.echo.spigotengine.data.listeners.AccessListener;
 import net.echo.spigotengine.data.loader.DataLoader;
+import net.echo.spigotengine.database.Database;
 import net.echo.spigotengine.listener.ListenerHandler;
 import net.echo.spigotengine.tasks.TaskHandler;
 import org.bukkit.Bukkit;
+
+import java.util.logging.Logger;
 
 /**
  * The main plugin class.
@@ -47,7 +50,7 @@ public abstract class SpigotPlugin<D extends UserData> {
     /**
      * Called once the plugin gets loaded.
      * <p>
-     * This method is the first method called, even before startup()
+     * This method is the first method called, before startup()
      */
     public void load() {
     }
@@ -68,11 +71,23 @@ public abstract class SpigotPlugin<D extends UserData> {
     }
 
     /**
+     * Returns the logger associated with this plugin.
+     */
+    public Logger getLogger() {
+        return pluginLoader.getLogger();
+    }
+
+    /**
      * Returns the loader associated with this plugin.
      */
     public PluginLoader<?> getLoader() {
         return pluginLoader;
     }
+
+    /**
+     * Returns an implementation of a database
+     */
+    public abstract Database getDatabase();
 
     /**
      * Returns an implementation of the {@link DataLoader} interface
@@ -111,7 +126,6 @@ public abstract class SpigotPlugin<D extends UserData> {
     /**
      * Returns the default listener handler for this plugin.
      */
-
     public ListenerHandler<?> getListenerHandler() {
         return listenerHandler;
     }
