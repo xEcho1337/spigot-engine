@@ -1,6 +1,7 @@
 import net.echo.spigotengine.boot.PluginLoader;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.data.loader.DataLoader;
+import net.echo.spigotengine.database.Database;
 
 public class ExamplePlugin extends SpigotPlugin<ExampleData> {
 
@@ -8,6 +9,11 @@ public class ExamplePlugin extends SpigotPlugin<ExampleData> {
 
     public ExamplePlugin(PluginLoader<?> pluginLoader) {
         super(pluginLoader);
+    }
+
+    @Override
+    public Database getDatabase() {
+        return null;
     }
 
     @Override
