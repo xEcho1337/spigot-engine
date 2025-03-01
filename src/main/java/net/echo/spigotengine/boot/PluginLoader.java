@@ -14,19 +14,26 @@ public abstract class PluginLoader<P extends SpigotPlugin<?>> extends JavaPlugin
      */
     public abstract P getPlugin();
 
+    private P plugin;
+
     @Override
     public void onLoad() {
-        getPlugin().load();
+        this.plugin = getPlugin();
+        this.plugin.load();
     }
 
     @Override
     public void onEnable() {
-        getPlugin().startup();
-        getPlugin().enable();
+        if (this.plugin == null) {
+            this.plugin = getPlugin();
+        }
+
+        this.plugin.startup();
+        this.plugin.enable();
     }
     
     @Override
     public void onDisable() {
-        getPlugin().disable();
+        this.plugin.disable();
     }
 }
