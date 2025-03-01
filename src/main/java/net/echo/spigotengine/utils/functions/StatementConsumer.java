@@ -1,5 +1,6 @@
 package net.echo.spigotengine.utils.functions;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -9,5 +10,5 @@ import java.sql.Statement;
  */
 public interface StatementConsumer<T> {
 
-    T accept(Statement statement) throws SQLException;
+    T accept(PreparedStatement statement) throws SQLException;
 }

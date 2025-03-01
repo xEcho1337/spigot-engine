@@ -41,7 +41,7 @@ public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Databa
 
     public <T> T execute(String query, StatementConsumer<T> function) {
         try (Connection connection = getConnection()) {
-            try (Statement statement = connection.prepareStatement(query)) {
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
                 return function.accept(statement);
             }
         } catch (SQLException e) {
