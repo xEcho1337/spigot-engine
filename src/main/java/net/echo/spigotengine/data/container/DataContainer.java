@@ -69,6 +69,8 @@ public class DataContainer<D extends UserData> {
     }
 
     public LoadResult load(UUID uuid, String name) {
+        if (dataLoader == null) return LoadResult.SUCCESS;
+
         D data = dataLoader.load(uuid, name).orElse(null);
 
         if (data == null) {
