@@ -1,11 +1,13 @@
 package net.echo.spigotengine.data.container;
 
+import com.google.common.base.Preconditions;
 import net.echo.spigotengine.data.LoadResult;
 import net.echo.spigotengine.data.UserData;
 import net.echo.spigotengine.data.loader.DataLoader;
 import org.bukkit.entity.Player;
 
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -20,6 +22,8 @@ public class DataContainer<D extends UserData> {
     private final DataLoader<D> dataLoader;
 
     public DataContainer(DataLoader<D> dataLoader) {
+        Preconditions.checkNotNull(dataLoader, "DataLoader cannot be null, if you dont use it, create one " +
+                "that returns a new UserData instance. Like: (uuid, name) -> Optional.of(new UserData(uuid, name))");
         this.dataLoader = dataLoader;
     }
 
@@ -69,8 +73,6 @@ public class DataContainer<D extends UserData> {
     }
 
     public LoadResult load(UUID uuid, String name) {
-        if (dataLoader == null) return LoadResult.SUCCESS;
-
         D data = dataLoader.load(uuid, name).orElse(null);
 
         if (data == null) {
