@@ -10,5 +10,5 @@ import java.sql.Statement;
  */
 public interface StatementConsumer<T> {
 
-    T accept(PreparedStatement statement) throws SQLException;
+    T accept(PreparedStatement statement) throws Exception;
 }

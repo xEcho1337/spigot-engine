@@ -47,7 +47,7 @@ public abstract class SQLiteDatabase<P extends SpigotPlugin<?>> implements Datab
     public <T> T execute(String query, StatementConsumer<T> function) {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             return function.accept(statement);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace(System.err);
         }
 
@@ -63,7 +63,7 @@ public abstract class SQLiteDatabase<P extends SpigotPlugin<?>> implements Datab
             setParameters(statement, params);
 
             return statement.executeQuery();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace(System.err);
         }
 

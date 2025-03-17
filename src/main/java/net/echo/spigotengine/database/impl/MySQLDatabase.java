@@ -13,30 +13,26 @@ import java.util.concurrent.Executor;
  */
 public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Database {
 
+    protected Executor executor;
+    protected DatabaseCredentials credentials;
     protected P plugin;
 
     public MySQLDatabase(P plugin) {
+        this.executor = getExecutor();
+        this.credentials = getCredentials();
         this.plugin = plugin;
     }
 
     public abstract Executor getExecutor();
 
-    public abstract String getHost();
-
-    public abstract int getPort();
-
-    public abstract String getDatabase();
-
-    public abstract String getUser();
-
-    public abstract String getPassword();
+    public abstract DatabaseCredentials getCredentials();
 
     public String getUrl() {
-        return "jdbc:mysql://" + getHost() + ":" + getPort() + "/" + getDatabase();
+        return "jdbc:mysql://" + credentials.host() + ":" + credentials.port() + "/" + credentials.database();
     }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(getUrl(), getUser(), getPassword());
+        return DriverManager.getConnection(getUrl(), credentials.user(), credentials.password());
     }
 
     public <T> T execute(String query, StatementConsumer<T> function) {
@@ -44,7 +40,7 @@ public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Databa
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 return function.accept(statement);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace(System.err);
         }
 
@@ -62,7 +58,7 @@ public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Databa
 
                 return statement.executeQuery();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace(System.err);
         }
 
@@ -80,7 +76,7 @@ public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Databa
 
                 return statement.executeUpdate();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace(System.err);
         }
 
@@ -91,9 +87,12 @@ public abstract class MySQLDatabase<P extends SpigotPlugin<?>> implements Databa
         return CompletableFuture.supplyAsync(() -> executeUpdate(query, params), getExecutor());
     }
 
-    private void setParameters(PreparedStatement statement, Object[] params) throws SQLException {
+    private void setParameters(PreparedStatement statement, Object[] params) throws Exception {
         for (int i = 0; i < params.length; i++) {
             statement.setObject(i + 1, params[i]);
         }
+    }
+
+    public record DatabaseCredentials(String host, String port, String database, String user, String password) {
     }
 }
